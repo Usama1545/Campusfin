@@ -7,7 +7,10 @@
 
 .scrollable {
     display: flex;
-    align-items: center; /* Center vertically */
+        align-items: center;
+        justify-content: flex-start; /* Align items to the left */
+        padding-left: 0; /* Remove any default padding */
+        margin-left: 0;
 }
 
 .social-links {
