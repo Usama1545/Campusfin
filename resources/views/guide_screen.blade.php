@@ -30,7 +30,7 @@
     <div class="container-fluid mt-3">
         <div class="row">
             <!-- Left Sidebar -->
-            <div class="col-md-2">
+            <!-- <div class="col-md-2">
                 <div class="list-group mt-5">
                     <a href="#" class="list-group-item list-group-item-action">Link 1</a>
                     <a href="#" class="list-group-item list-group-item-action">Link 1</a>
@@ -41,16 +41,31 @@
                     <a href="#" class="list-group-item list-group-item-action">Link 2</a>
                     <a href="#" class="list-group-item list-group-item-action">Link 3</a>
                 </div>
-            </div>
+            </div> -->
 
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Guide</h5>
+                        <!-- Your Google Ads content goes here -->
+
+                        <div class="list-group mt-3">
+
+                    <a href="#" class="list-group-item list-group-item-action">Link 1</a>
+                    <a href="#" class="list-group-item list-group-item-action">Link 2</a>
+                    <a href="#" class="list-group-item list-group-item-action">Link 3</a>
+                </div>
+                    </div>
+                </div>
+            </div>
             <!-- Center Content Area -->
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <h1 class="text-center">Main Content Area</h1>
                 <p class="text-center">This is the center content area where your main content will go.</p>
             </div>
 
             <!-- Right Sidebar for Google Ads -->
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Google Ads</h5>
@@ -68,7 +83,7 @@
 
   </main><!-- End #main -->
 
-  <!-- Yasir Hameed -->
+<br><br>  <!-- Yasir Hameed -->
 
   <!-- ======= Footer ======= -->
   @include('layouts.footer')
