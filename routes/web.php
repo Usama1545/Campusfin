@@ -19,3 +19,10 @@ Route::get('/blogs', function () {
 Route::get('/blogs_preview', function () {
     return view('blogs_preview');
 });
+
+Route::get('/login', function () {
+    return view('auth.login'); // Note the lowercase "auth" and "login"
+});
+Route::get('/register', function () {
+    return view('auth.register'); // Note the lowercase "auth" and "login"
+});
