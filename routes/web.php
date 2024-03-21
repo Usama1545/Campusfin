@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 
 
@@ -21,8 +22,14 @@ Route::get('/blogs_preview', function () {
 });
 
 Route::get('/login', function () {
-    return view('auth.login'); // Note the lowercase "auth" and "login"
+    return view('auth.login');
 });
 Route::get('/register', function () {
-    return view('auth.register'); // Note the lowercase "auth" and "login"
+    return view('auth.register');
 });
+
+Route::get('/admin', function () {
+    return view('dashboard');
+});
+
+// Route::get('/admin', [AdminController::class. 'index']);
