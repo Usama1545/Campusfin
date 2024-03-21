@@ -32,20 +32,18 @@
                                 <input type="email" name="email" id="email" placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="pass" id="pass" placeholder="Password"/>
+                                <label for="Phone"><i class="zmdi zmdi-phone"></i></label>
+                                <input type="phone" name="Phone" id="Phone" placeholder="Phone"/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Repeat your password"/>
+                                <input type="password" name="re_pass" id="re_pass" placeholder="Password"/>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                                <input type="submit" name="signup" id="signup" class="btn btn-primary" value="Register"/>
                             </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
-                                <a href="" class="btn btn-primary" style="background-color:#F8F8F8; color:black ">Login</a>
+                            <div class="form-group">
+                            <a href="" class="btn btn-primary" style="background-color:#F8F8F8; color:black ">Login</a>
                             </div>
                         </form>
                     </div>
@@ -53,7 +51,7 @@
                         <figure><img src="login_auth/images/signup-image.jpg" alt="sing up image"></figure>
                         <!-- <a href="#" class="signup-image-link">I am already member</a>
                         <br> -->
-                         <a href="" class="btn btn-primary" style="">Guide</a>
+                        <a href="" class="btn btn-primary" style="">Guide</a>
                         <a href="" class="btn btn-primary">Blog</a>
                         <a href="" class="btn btn-primary">Project</a>
 

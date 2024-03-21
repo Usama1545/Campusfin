@@ -30,19 +30,6 @@
     <div class="container-fluid mt-3">
         <div class="row">
             <!-- Left Sidebar -->
-            <!-- <div class="col-md-2">
-                <div class="list-group mt-5">
-                    <a href="#" class="list-group-item list-group-item-action">Link 1</a>
-                    <a href="#" class="list-group-item list-group-item-action">Link 1</a>
-                    <a href="#" class="list-group-item list-group-item-action">Link 1</a>
-                    <a href="#" class="list-group-item list-group-item-action">Link 1</a>
-                    <a href="#" class="list-group-item list-group-item-action">Link 1</a>
-                    <a href="#" class="list-group-item list-group-item-action">Link 1</a>
-                    <a href="#" class="list-group-item list-group-item-action">Link 2</a>
-                    <a href="#" class="list-group-item list-group-item-action">Link 3</a>
-                </div>
-            </div> -->
-
             <div class="col-md-2">
                 <div class="card">
                     <div class="card-body">
@@ -59,9 +46,9 @@
                 </div>
             </div>
             <!-- Center Content Area -->
-            <div class="col-md-8">
-    <h1 class="text-center">Main Content Area</h1>
-    <p class="text-center">This is the center content area where your main content will go.</p>
+            <div class="col-md-8 mt-3">
+    <h1 class="text-center">Blogs</h1>
+    <!-- <p class="text-center">This is the center content area where your main content will go.</p> -->
 
     <div class="row">
         <div class="col-md-4">
@@ -70,7 +57,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Blog Title 1</h5>
                     <p class="card-text">Brief description of Blog 1.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                    <!-- <a href="#" class="btn btn-primary">Read More</a> -->
                 </div>
             </div>
         </div>
@@ -81,7 +68,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Blog Title 2</h5>
                     <p class="card-text">Brief description of Blog 2.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                    <!-- <a href="#" class="btn btn-primary">Read More</a> -->
                 </div>
             </div>
         </div>
@@ -92,7 +79,27 @@
                 <div class="card-body">
                     <h5 class="card-title">Blog Title 3</h5>
                     <p class="card-text">Brief description of Blog 3.</p>
-                    <a href="#" class="btn btn-primary">Read More</a>
+                    <!-- <a href="#" class="btn btn-primary">Read More</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+            <img src="img/a.jpg" class="card-img-top" alt="Blog Image 1">
+                <div class="card-body">
+                    <h5 class="card-title">Blog Title 3</h5>
+                    <p class="card-text">Brief description of Blog 3.</p>
+                    <!-- <a href="#" class="btn btn-primary">Read More</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+            <img src="img/a.jpg" class="card-img-top" alt="Blog Image 1">
+                <div class="card-body">
+                    <h5 class="card-title">Blog Title 3</h5>
+                    <p class="card-text">Brief description of Blog 3.</p>
+                    <!-- <a href="#" class="btn btn-primary">Read More</a> -->
                 </div>
             </div>
         </div>

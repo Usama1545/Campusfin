@@ -66,66 +66,51 @@
 
 
   <main id="main">
-
-
-
-
     <div class="container-fluid mt-3">
         <div class="row">
-
-
             <div class="col-md-2">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title text-center">Guide</h5>
+                    <h5 class="card-title text-center">Guide</h5>
                         <!-- Your Google Ads content goes here -->
-
-                        <div class="list-group mt-3">
-
-                    <a href="#" class="list-group-item list-group-item-action">Link 1</a>
-                    <a href="#" class="list-group-item list-group-item-action">Link 2</a>
-                    <a href="#" class="list-group-item list-group-item-action">Link 3</a>
-                </div>
+                    <div class="list-group mt-3">
+                        <a href="#" class="list-group-item list-group-item-action">Link 1</a>
+                        <a href="#" class="list-group-item list-group-item-action">Link 2</a>
+                        <a href="#" class="list-group-item list-group-item-action">Link 3</a>
+                    </div>
                     </div>
                 </div>
             </div>
             <!-- Center Content Area -->
             <div class="col-md-8">
-    <h1 class="text-center">Main Content Area</h1>
-    <p class="text-center">This is the center content area where your main content will go.</p>
+    <h1 class="text-center">Blog Title</h1>
+    <!-- <p class="text-center">This is the center content area where your main content will go.</p> -->
 
     <div class="blog-preview">
         <div class="blog-thumbnail">
-        <img src="img/a.jpg" alt="Google Ads" class="img-fluid">
+            <img src="img/a.jpg" alt="Google Ads" class="img-fluid">
         </div>
         <div class="blog-info">
             <h2 class="blog-title">Blog Title 1</h2>
-            <p class="blog-summary">Brief summary of Blog 1. This is a short description of the blog content.</p>
-            <a href="#" class="btn btn-primary">Read More</a>
+            <p class="blog-summary">Brief summary of Blog 1. This is a short description of the blog content. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, recusandae praesentium eos sapiente quia dicta fugiat corrupti deserunt! Saepe unde eius similique necessitatibus maxime autem ex. Aspernatur ipsum facere velit.</p>
+            <!-- <a href="#" class="btn btn-primary">Read More</a> -->
         </div>
     </div>
 
     <!-- Repeat the above structure for other blogs -->
-</div>
-
-
+    </div>
             <!-- Right Sidebar for Google Ads -->
-            <div class="col-md-2">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Google Ads</h5>
+        <div class="col-md-2">
+           <div class="card">
+              <div class="card-body">
+                 <h5 class="card-title">Google Ads</h5>
                         <!-- Your Google Ads content goes here -->
-                        <img src="https://via.placeholder.com/300x600" alt="Google Ads" class="img-fluid">
-                    </div>
-                </div>
-            </div>
+                 <img src="https://via.placeholder.com/300x600" alt="Google Ads" class="img-fluid">
+              </div>
+           </div>
         </div>
     </div>
-
-
-
-
-
+    </div>
   </main><!-- End #main -->
 
 <br><br>  <!-- Yasir Hameed -->
