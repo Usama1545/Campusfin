@@ -8,7 +8,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- Font Icon -->
     <link rel="stylesheet" href="login_auth/fonts/material-icon/css/material-design-iconic-font.min.css">
-
     <!-- Main css -->
     <link rel="stylesheet" href="login_auth/css/style.css">
 </head>
@@ -51,6 +50,7 @@
                         <figure><img src="login_auth/images/signup-image.jpg" alt="sing up image"></figure>
                         <!-- <a href="#" class="signup-image-link">I am already member</a>
                         <br> -->
+                        <span><h4>Rights</h4></span>
                         <a href="" class="btn btn-primary" style="">Guide</a>
                         <a href="" class="btn btn-primary">Blog</a>
                         <a href="" class="btn btn-primary">Project</a>
