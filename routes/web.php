@@ -2,34 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 
 
+// HomeController
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get("/", [HomeController::class, 'index']);
+Route::get("/guide", [HomeController::class, 'guide_screen']);
+Route::get("/blogs", [HomeController::class, 'blogs_screen']);
+Route::get("/blogs_preview", [HomeController::class, 'blogs_preview']);
 
-Route::get('/guide', function () {
-    return view('guide_screen');
-});
 
-Route::get('/blogs', function () {
-    return view('blogs_screen');
-});
+// AdminController
 
-Route::get('/blogs_preview', function () {
-    return view('blogs_preview');
-});
-
-Route::get('/login', function () {
-    return view('auth.login');
-});
-Route::get('/register', function () {
-    return view('auth.register');
-});
-
-Route::get('/admin', function () {
-    return view('dashboard');
-});
-
-// Route::get('/admin', [AdminController::class. 'index']);
+Route::get("/admin", [AdminController::class, 'index']);
+Route::get("/login", [AdminController::class, 'login']);
+Route::get("/register", [AdminController::class, 'register']);
+Route::post("/register", [AdminController::class, 'store']);
