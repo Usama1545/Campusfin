@@ -15,6 +15,23 @@
         <!-- Sing in  Form -->
         <section class="sign-in">
             <div class="container">
+            @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <!-- Display validation errors -->
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="login_auth/images/signin-image.jpg" alt="sing up image"></figure>
@@ -23,23 +40,30 @@
 
                     <div class="signin-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="login-form">
-                            <div class="form-group">
-                                <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="email" name="email" id="email" placeholder="Email"/>
-                            </div>
-                            <div class="form-group">
-                                <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="your_pass" id="your_pass" placeholder="Password"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
-                                <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
-                            </div>
-                            <div class="form-group form-button">
-                                <input type="submit" name="signin" id="signin" class="btn btn-primary" value="Log in"/>
-                            </div>
-                        </form>
+                        <form method="POST" action="{{ url('login') }}" class="register-form" id="login-form">
+    @csrf
+    <div class="form-group">
+        <label for="employee_email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+        <input type="email" name="email" id="employee_email" placeholder="Email" value="{{ old('employee_email') }}" required />
+        @error('employee_email')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="form-group">
+        <label for="employee_password"><i class="zmdi zmdi-lock"></i></label>
+        <input type="password" name="password" id="employee_password" placeholder="Password" required />
+        @error('employee_password')
+            <span class="text-danger">{{ $message }}</span>
+        @enderror
+    </div>
+    <div class="form-group">
+        <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} />
+        <label for="remember" class="label-agree-term"><span><span></span></span>Remember me</label>
+    </div>
+    <div class="form-group form-button">
+        <button type="submit" class="btn btn-primary">Log in</button>
+    </div>
+</form>
                         <div class="social-login">
                             <span class="social-label">Or login with</span>
                             <ul class="socials">

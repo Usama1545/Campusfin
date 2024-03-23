@@ -36,25 +36,25 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="employee_name" id="name" placeholder="Your Name"/>
+                                <input type="text" name="name" id="name" placeholder="Your Name"/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="employee_email" id="email" placeholder="Your Email"/>
+                                <input type="email" name="email" id="email" placeholder="Your Email"/>
                             </div>
                             <div class="form-group">
                                 <label for="Phone"><i class="zmdi zmdi-phone"></i></label>
-                                <input type="phone" name="employee_phone" id="Phone" placeholder="Phone"/>
+                                <input type="phone" name="phone" id="Phone" placeholder="Phone"/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="employee_password" id="re_pass" placeholder="Password"/>
+                                <input type="password" name="password" id="re_pass" placeholder="Password"/>
                             </div>
                             <div class="form-group">
                                 <input type="submit"  name="submit" id="signup" class="btn btn-primary" value="Register"/>
                             </div>
                             <div class="form-group">
-                            <a href="" class="btn btn-primary" style="background-color:#F8F8F8; color:black ">Login</a>
+                            <a href="{{url('login')}}" class="btn btn-primary" style="background-color:#F8F8F8; color:black ">Login</a>
                             </div>
                         </form>
                     </div>
