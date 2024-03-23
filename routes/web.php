@@ -16,7 +16,13 @@ Route::get("/blogs_preview", [HomeController::class, 'blogs_preview']);
 
 // AdminController
 
-Route::get("/admin", [AdminController::class, 'index']);
+// Route::get("/admin", [AdminController::class, 'index']);
+Route::middleware('auth.check')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    // Other admin routes...
+});
+Route::get('/add_project', [AdminController::class, 'add_project'])->name('add_project');
+Route::Post('/project_store', [AdminController::class, 'project_store'])->name('project_store');
 // login system
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
