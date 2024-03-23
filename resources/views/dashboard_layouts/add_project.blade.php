@@ -37,131 +37,135 @@
 
                     <!-- Content Row -->
                     <div class="row">
-                    <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header">Create New Project</div>
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10">
+                                    <div class="card">
+                                        <div class="card-header">Create New Project</div>
 
-                @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
+                                        @if(session('success'))
+                                        <div class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                        @endif
+
+                                        @if(session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                        @endif
+
+                                        <div class="card-body">
+                                        <form method="POST" action="{{ url('project_store') }}" enctype="multipart/form-data">
+    @csrf
+
+    <!-- Project Name -->
+    <div class="form-group">
+        <label for="Project_Name">Project Name</label>
+        <input type="text" id="Project_Name" name="Project_Name" class="form-control" required>
     </div>
-@endif
 
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
+    <!-- Project Logo -->
+    <div class="form-group">
+        <label for="Project_Logo">Project Logo</label>
+        <input type="file" id="Project_Logo" name="Project_Logo" class="form-control-file">
     </div>
-@endif
 
-                <div class="card-body">
-                <form method="POST" action="{{ url('project_store') }}" enctype="multipart/form-data">
-                        @csrf
-
-                        <!-- Project Name -->
-                        <div class="form-group ">
-                            <label for="project_name">Project Name</label>
-                            <input type="text" id="project_name" name="project_name" class="form-control" required>
-                        </div>
-
-                        <!-- Project Logo -->
-                        <div class="form-group ">
-                            <label for="project_logo">Project Logo</label>
-                            <input type="file" id="project_logo" name="project_logo" class="form-control-file">
-                        </div>
-
-                        <!-- Project Symbol -->
-                        <div class="form-group">
-                            <label for="project_symbol">Project Symbol</label>
-                            <input type="text" id="project_symbol" name="project_symbol" class="form-control">
-                        </div>
-
-                        <!-- Project Type -->
-                        <div class="form-group">
-                            <label for="project_type">Project Type</label>
-                            <input type="text" id="project_type" name="project_type" class="form-control">
-                        </div>
-
-                        <!-- Project Domain -->
-                        <div class="form-group">
-                            <label for="project_domain">Project Domain</label>
-                            <input type="text" id="project_domain" name="project_domain" class="form-control">
-                        </div>
-
-                        <!-- Project Category -->
-                        <div class="form-group">
-                            <label for="project_category">Project Category</label>
-                            <input type="text" id="project_category" name="project_category" class="form-control">
-                        </div>
-
-                        <!-- Project Launch Date -->
-                        <div class="form-group">
-                            <label for="project_launch_date">Project Launch Date</label>
-                            <input type="date" id="project_launch_date" name="project_launch_date" class="form-control">
-                        </div>
-
-                        <!-- Project Audits -->
-                        <div class="form-group">
-                            <label for="project_audits">Project Audits</label>
-                            <input type="text" id="project_audits" name="project_audits" class="form-control">
-                        </div>
-
-                        <!-- Token Standard -->
-                        <div class="form-group">
-                            <label for="token_standard">Token Standard</label>
-                            <input type="text" id="token_standard" name="token_standard" class="form-control">
-                        </div>
-
-                        <!-- Blockchain Platform -->
-                        <div class="form-group">
-                            <label for="blockchain_platform">Blockchain Platform</label>
-                            <input type="text" id="blockchain_platform" name="blockchain_platform" class="form-control">
-                        </div>
-
-                        <!-- Project Website -->
-                        <div class="form-group">
-                            <label for="project_website">Project Website</label>
-                            <input type="url" id="project_website" name="project_website" class="form-control">
-                        </div>
-
-                        <!-- Project GitHub Link -->
-                        <div class="form-group">
-                            <label for="project_github_link">Project GitHub Link</label>
-                            <input type="url" id="project_github_link" name="project_github_link" class="form-control">
-                        </div>
-
-                        <!-- Project Whitepaper -->
-                        <div class="form-group">
-                            <label for="project_whitepaper">Project Whitepaper</label>
-                            <input type="url" id="project_whitepaper" name="project_whitepaper" class="form-control">
-                        </div>
-
-                        <!-- Project Comment -->
-                        <div class="form-group">
-                            <label for="project_comment">Project Comment</label>
-                            <textarea id="project_comment" name="project_comment" class="form-control" rows="3"></textarea>
-                        </div>
-
-                        <!-- Developer ID -->
-                        <div class="form-group">
-                            <label for="developer_id">Developer ID</label>
-                            <input type="number" id="developer_id" name="developer_id" class="form-control">
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
+    <!-- Project Symbol -->
+    <div class="form-group">
+        <label for="Project_Symbol">Project Symbol</label>
+        <input type="text" id="Project_Symbol" name="Project_Symbol" class="form-control">
     </div>
-</div>
 
-                    </dev>
+    <!-- Project Type -->
+    <div class="form-group">
+        <label for="Project_Type">Project Type</label>
+        <input type="text" id="Project_Type" name="Project_Type" class="form-control">
+    </div>
+
+    <!-- Project Domain -->
+    <div class="form-group">
+        <label for="Project_Domain">Project Domain</label>
+        <input type="text" id="Project_Domain" name="Project_Domain" class="form-control">
+    </div>
+
+    <!-- Project Category -->
+    <div class="form-group">
+        <label for="Project_Category">Project Category</label>
+        <input type="text" id="Project_Category" name="Project_Category" class="form-control">
+    </div>
+
+    <!-- Project Launch Date -->
+    <div class="form-group">
+        <label for="Project_Launch_Date">Project Launch Date</label>
+        <input type="date" id="Project_Launch_Date" name="Project_Launch_Date" class="form-control">
+    </div>
+
+    <!-- Token Standard -->
+    <div class="form-group">
+        <label for="Token_Standard">Token Standard</label>
+        <input type="text" id="Token_Standard" name="Token_Standard" class="form-control">
+    </div>
+
+    <!-- Blockchain Platform -->
+    <div class="form-group">
+        <label for="BlockChain_Plateform">Blockchain Platform</label>
+        <input type="text" id="BlockChain_Plateform" name="BlockChain_Plateform" class="form-control">
+    </div>
+
+    <!-- Project Website -->
+    <div class="form-group">
+        <label for="Project_Website">Project Website</label>
+        <input type="url" id="Project_Website" name="Project_Website" class="form-control">
+    </div>
+
+    <!-- Project GitHub Link -->
+    <div class="form-group">
+        <label for="Project_GitHub_Link">Project GitHub Link</label>
+        <input type="url" id="Project_GitHub_Link" name="Project_GitHub_Link" class="form-control">
+    </div>
+
+    <!-- Project Whitepaper -->
+    <div class="form-group">
+        <label for="Project_WhitePaper">Project Whitepaper</label>
+        <input type="url" id="Project_WhitePaper" name="Project_WhitePaper" class="form-control">
+    </div>
+
+    <!-- Project Comment -->
+    <div class="form-group">
+        <label for="Project_Comment">Project Comment</label>
+        <textarea id="Project_Comment" name="Project_Comment" class="form-control" rows="3"></textarea>
+    </div>
+
+    <!-- Project Comment Id -->
+    <div class="form-group">
+        <label for="Project_Comment_Id">Project Comment ID</label>
+        <input type="number" id="Project_Comment_Id" name="Project_Comment_Id" class="form-control">
+    </div>
+
+    <!-- Project Total Supply -->
+    <div class="form-group">
+        <label for="Project_Total_Supply">Project Total Supply</label>
+        <input type="number" id="Project_Total_Supply" name="Project_Total_Supply" class="form-control">
+    </div>
+
+    <!-- Project Circulating Supply -->
+    <div class="form-group">
+        <label for="Project_Circulating_Supply">Project Circulating Supply</label>
+        <input type="number" id="Project_Circulating_Supply" name="Project_Circulating_Supply" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Content Row -->
-
-
-
                 </div>
                 <!-- /.container-fluid -->
 

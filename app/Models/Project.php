@@ -8,22 +8,24 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+    protected $table = 'project_table';
 
     protected $fillable = [
-        'project_name',
-        'project_logo',
-        'project_symbol',
-        'project_type',
-        'project_domain',
-        'project_category',
-        'project_launch_date',
-        'project_audits',
-        'token_standard',
-        'blockchain_platform',
-        'project_website',
-        'project_github_link',
-        'project_whitepaper',
-        'project_comment',
-        'developer_id',
+        'Project_Name',
+        'Project_Logo',
+        'Project_Symbol',
+        'Project_Type',
+        'Project_Domain',
+        'Project_Category',
+        'Project_Launch_Date',
+        'Token_Standard',
+        'BlockChain_Plateform',
+        'Project_Website',
+        'Project_GitHub_Link',
+        'Project_WhitePaper',
+        'Project_Comment',
+        'Project_Comment_Id',
+        'Project_Total_Supply',
+        'Project_Circulating_Supply',
     ];
 }

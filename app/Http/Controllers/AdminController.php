@@ -21,40 +21,38 @@ class AdminController extends Controller
         return view('dashboard_layouts.add_project');
     }
 
-    public function project_store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'project_name' => 'required|string|max:255',
-            'project_logo' => 'nullable|image|max:2048',
-            // Add validation rules for other fields
-        ]);
+    function project_store(Request $request)
+        {
+            // Store the project logo file
+            if ($request->hasFile('Project_Logo')) {
+                $logoPath = $request->file('Project_Logo')->store('project_logos', 'public');
+            }
 
-        // Store the project logo file
-        if ($request->hasFile('project_logo')) {
-            $logoPath = $request->file('project_logo')->store('project_logos', 'public');
+            // Create a new instance of Project
+            $project = new Project;
+            $project->Project_Name = $request->Project_Name;
+            $project->Project_Logo = $logoPath ?? null;
+            $project->Project_Symbol = $request->Project_Symbol;
+            $project->Project_Type = $request->Project_Type;
+            $project->Project_Domain = $request->Project_Domain;
+            $project->Project_Category = $request->Project_Category;
+            $project->Project_Launch_Date = $request->Project_Launch_Date;
+            $project->Token_Standard = $request->Token_Standard;
+            $project->BlockChain_Plateform = $request->BlockChain_Plateform;
+            $project->Project_Website = $request->Project_Website;
+            $project->Project_GitHub_Link = $request->Project_GitHub_Link;
+            $project->Project_WhitePaper = $request->Project_WhitePaper;
+            $project->Project_Comment = $request->Project_Comment;
+            $project->Project_Comment_Id = $request->Project_Comment_Id;
+            $project->Project_Total_Supply = $request->Project_Total_Supply;
+            $project->Project_Circulating_Supply = $request->Project_Circulating_Supply;
+
+            // Save the project record
+            $project->save();
+
+            return view('dashboard_layouts.add_project')->with('success', 'Project created successfully!');
         }
 
-        // Create the project record
-        $project = Project::create([
-            'project_name' => $validatedData['project_name'],
-            'project_logo' => $logoPath ?? null,
-            'project_symbol' => $request->input('project_symbol'),
-            'project_type' => $request->input('project_type'),
-            'project_domain' => $request->input('project_domain'),
-            'project_category' => $request->input('project_category'),
-            'project_launch_date' => $request->input('project_launch_date'),
-            'project_audits' => $request->input('project_audits'),
-            'token_standard' => $request->input('token_standard'),
-            'blockchain_platform' => $request->input('blockchain_platform'),
-            'project_website' => $request->input('project_website'),
-            'project_github_link' => $request->input('project_github_link'),
-            'project_whitepaper' => $request->input('project_whitepaper'),
-            'project_comment' => $request->input('project_comment'),
-            'developer_id' => $request->input('developer_id'),
-        ]);
-
-        return view('dashboard_layouts.add_project')->with('success', 'Project created successfully!');
-    }
 
 
     public function project_list()
