@@ -53,7 +53,16 @@ class AdminController extends Controller
             'developer_id' => $request->input('developer_id'),
         ]);
 
-        return redirect()->route('projects.index')->with('success', 'Project created successfully!');
+        return view('dashboard_layouts.add_project')->with('success', 'Project created successfully!');
+    }
+
+
+    public function project_list()
+    {
+        $projects = Project::paginate(6);
+
+
+        return view('dashboard_layouts.project_list', compact('projects'));
     }
 
 }
