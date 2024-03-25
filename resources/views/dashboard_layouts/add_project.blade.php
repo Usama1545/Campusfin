@@ -39,7 +39,7 @@
                     <div class="row">
                         <div class="container">
                             <div class="row justify-content-center">
-                                <div class="col-md-10">
+                                <div class="col-md-12">
                                     <div class="card">
                                         <div class="card-header">Create New Project</div>
 
@@ -56,107 +56,11 @@
                                         @endif
 
                                         <div class="card-body">
-                                        <form method="POST" action="{{ url('project_store') }}" enctype="multipart/form-data">
-    @csrf
 
-    <!-- Project Name -->
-    <div class="form-group">
-        <label for="Project_Name">Project Name</label>
-        <input type="text" id="Project_Name" name="Project_Name" class="form-control" required>
-    </div>
 
-    <!-- Project Logo -->
-    <div class="form-group">
-        <label for="Project_Logo">Project Logo</label>
-        <input type="file" id="Project_Logo" name="Project_Logo" class="form-control-file">
-    </div>
+@include("dashboard_layouts.tab_form")
 
-    <!-- Project Symbol -->
-    <div class="form-group">
-        <label for="Project_Symbol">Project Symbol</label>
-        <input type="text" id="Project_Symbol" name="Project_Symbol" class="form-control">
-    </div>
 
-    <!-- Project Type -->
-    <div class="form-group">
-        <label for="Project_Type">Project Type</label>
-        <input type="text" id="Project_Type" name="Project_Type" class="form-control">
-    </div>
-
-    <!-- Project Domain -->
-    <div class="form-group">
-        <label for="Project_Domain">Project Domain</label>
-        <input type="text" id="Project_Domain" name="Project_Domain" class="form-control">
-    </div>
-
-    <!-- Project Category -->
-    <div class="form-group">
-        <label for="Project_Category">Project Category</label>
-        <input type="text" id="Project_Category" name="Project_Category" class="form-control">
-    </div>
-
-    <!-- Project Launch Date -->
-    <div class="form-group">
-        <label for="Project_Launch_Date">Project Launch Date</label>
-        <input type="date" id="Project_Launch_Date" name="Project_Launch_Date" class="form-control">
-    </div>
-
-    <!-- Token Standard -->
-    <div class="form-group">
-        <label for="Token_Standard">Token Standard</label>
-        <input type="text" id="Token_Standard" name="Token_Standard" class="form-control">
-    </div>
-
-    <!-- Blockchain Platform -->
-    <div class="form-group">
-        <label for="BlockChain_Plateform">Blockchain Platform</label>
-        <input type="text" id="BlockChain_Plateform" name="BlockChain_Plateform" class="form-control">
-    </div>
-
-    <!-- Project Website -->
-    <div class="form-group">
-        <label for="Project_Website">Project Website</label>
-        <input type="url" id="Project_Website" name="Project_Website" class="form-control">
-    </div>
-
-    <!-- Project GitHub Link -->
-    <div class="form-group">
-        <label for="Project_GitHub_Link">Project GitHub Link</label>
-        <input type="url" id="Project_GitHub_Link" name="Project_GitHub_Link" class="form-control">
-    </div>
-
-    <!-- Project Whitepaper -->
-    <div class="form-group">
-        <label for="Project_WhitePaper">Project Whitepaper</label>
-        <input type="url" id="Project_WhitePaper" name="Project_WhitePaper" class="form-control">
-    </div>
-
-    <!-- Project Comment -->
-    <div class="form-group">
-        <label for="Project_Comment">Project Comment</label>
-        <textarea id="Project_Comment" name="Project_Comment" class="form-control" rows="3"></textarea>
-    </div>
-
-    <!-- Project Comment Id -->
-    <div class="form-group">
-        <label for="Project_Comment_Id">Project Comment ID</label>
-        <input type="number" id="Project_Comment_Id" name="Project_Comment_Id" class="form-control">
-    </div>
-
-    <!-- Project Total Supply -->
-    <div class="form-group">
-        <label for="Project_Total_Supply">Project Total Supply</label>
-        <input type="number" id="Project_Total_Supply" name="Project_Total_Supply" class="form-control">
-    </div>
-
-    <!-- Project Circulating Supply -->
-    <div class="form-group">
-        <label for="Project_Circulating_Supply">Project Circulating Supply</label>
-        <input type="number" id="Project_Circulating_Supply" name="Project_Circulating_Supply" class="form-control">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
 
                                         </div>
                                     </div>
@@ -212,7 +116,7 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="admin_dashboard/vendor/jquery/jquery.min.js"></script>
     <script src="admin_dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
