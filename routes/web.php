@@ -24,6 +24,9 @@ Route::middleware('auth.check')->group(function () {
 Route::get('/add_project', [AdminController::class, 'add_project'])->name('add_project');
 Route::Post('/project_store', [AdminController::class, 'project_store'])->name('project_store');
 Route::get('/list_project', [AdminController::class, 'project_list'])->name('list_project');
+// Route::get('/project-list', 'YourController@project_list')->name('project.list');
+
+
 // login system
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
