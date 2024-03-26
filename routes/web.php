@@ -4,14 +4,26 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\GuideController;
 
 
 // HomeController
 
 Route::get("/", [HomeController::class, 'index']);
-Route::get("/guide", [HomeController::class, 'guide_screen']);
-Route::get("/blogs", [HomeController::class, 'blogs_screen']);
-Route::get("/blogs_preview", [HomeController::class, 'blogs_preview']);
+Route::get("/add_project_home", [HomeController::class, 'add_project_home']);
+Route::post("/project_store_home", [HomeController::class, 'project_store_home']);
+
+
+
+// Guide Route
+Route::get("/guide", [GuideController::class, 'guide_screen']);
+
+
+// blogs routs
+
+Route::get("/blogs", [BlogsController::class, 'blogs_screen']);
+Route::get("/blogs_preview", [BlogsController::class, 'blogs_preview']);
 
 
 // AdminController
