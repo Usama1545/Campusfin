@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
 
         $project_category = Category::all();
-        return view('layouts.add_project_home', compact('project_category'));
+        return view('screens.add_project_home', compact('project_category'));
     }
 
 
@@ -71,7 +71,26 @@ class HomeController extends Controller
         // Save the project record
         $project->save();
 
-        return view('layouts.add_project_home')->with('success', 'Project created successfully!');
+        return view('screens.add_project_home')->with('success', 'Project created successfully!');
     }
+
+
+    public function manage_project_home()
+    {
+        $projects = Project::with('category') // Eager load the category relationship
+        ->where('status', 'approved')
+        ->get();
+
+
+        return view('screens.manage_project_home', compact('projects'));
+    }
+
+    public function showPreview($id)
+    {
+
+        $projects = Project::findOrFail($id);
+        return view('screens.blogs_screen', compact('projects'));
+    }
+
 
 }

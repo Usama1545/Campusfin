@@ -1,32 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<title>Guide Screen</title>
+<title>Manage Project</title>
 @include('layouts.head')
-
-
 </head>
-
 <body>
-
   <!-- ======= Top Bar ======= -->
-
   @include('layouts.guide_topbar')
   <!-- ======= Header ======= -->
-
-
   @include('layouts.header_nav')
-
-
   <!-- End Header -->
-
-
   <main id="main">
-
-
-
-
     <div class="container-fluid mt-3">
         <div class="row">
             <!-- Left Sidebar -->
@@ -47,66 +31,31 @@
             </div>
             <!-- Center Content Area -->
             <div class="col-md-8 mt-3">
-    <h1 class="text-center">Blogs</h1>
+    <h1 class="text-center">Manage Project</h1>
     <!-- <p class="text-center">This is the center content area where your main content will go.</p> -->
-
     <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-            <img src="img/a.jpg" class="card-img-top" alt="Blog Image 1">
+    @foreach($projects as $project)
+    <div class="col-md-4 mt-5">
+            <div class="card" style="width: 18rem;">
+                <img src="img/a.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Blog Title 1</h5>
-                    <p class="card-text">Brief description of Blog 1.</p>
-                    <!-- <a href="#" class="btn btn-primary">Read More</a> -->
+                    <h5 class="card-title">{{$project->Project_Name}}</h5>
+                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Category {{$project->category_id }}</li>
+                    <li class="list-group-item">Launch Date {{$project->Project_Launch_Date }}</li>
+                    <li class="list-group-item">A second item</li>
+                </ul>
+                <div class="card-body">
+                <a href="{{ url('project_preview', $project->id) }}" class="card-link">View Project</a>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-4">
-            <div class="card">
-            <img src="img/a.jpg" class="card-img-top" alt="Blog Image 1">
-                <div class="card-body">
-                    <h5 class="card-title">Blog Title 2</h5>
-                    <p class="card-text">Brief description of Blog 2.</p>
-                    <!-- <a href="#" class="btn btn-primary">Read More</a> -->
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card">
-            <img src="img/a.jpg" class="card-img-top" alt="Blog Image 1">
-                <div class="card-body">
-                    <h5 class="card-title">Blog Title 3</h5>
-                    <p class="card-text">Brief description of Blog 3.</p>
-                    <!-- <a href="#" class="btn btn-primary">Read More</a> -->
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-            <img src="img/a.jpg" class="card-img-top" alt="Blog Image 1">
-                <div class="card-body">
-                    <h5 class="card-title">Blog Title 3</h5>
-                    <p class="card-text">Brief description of Blog 3.</p>
-                    <!-- <a href="#" class="btn btn-primary">Read More</a> -->
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-            <img src="img/a.jpg" class="card-img-top" alt="Blog Image 1">
-                <div class="card-body">
-                    <h5 class="card-title">Blog Title 3</h5>
-                    <p class="card-text">Brief description of Blog 3.</p>
-                    <!-- <a href="#" class="btn btn-primary">Read More</a> -->
-                </div>
-            </div>
-        </div>
+@endforeach
     </div>
+
 </div>
-
-
             <!-- Right Sidebar for Google Ads -->
             <div class="col-md-2">
                 <div class="card">
@@ -119,15 +68,8 @@
             </div>
         </div>
     </div>
-
-
-
-
-
   </main><!-- End #main -->
-
 <br><br>  <!-- Yasir Hameed -->
-
   <!-- ======= Footer ======= -->
   @include('layouts.footer')
 
