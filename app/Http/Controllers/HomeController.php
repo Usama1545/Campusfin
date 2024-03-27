@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Project;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -74,15 +75,35 @@ class HomeController extends Controller
         return view('screens.add_project_home')->with('success', 'Project created successfully!');
     }
 
-
-    public function manage_project_home()
+    public function manage_project_home(Request $request)
     {
-        $projects = Project::with('category') // Eager load the category relationship
-        ->where('status', 'approved')
-        ->get();
+        // Get all categories
+        $categories = Category::all();
 
+        // Get search query
+        $searchQuery = $request->input('search');
 
-        return view('screens.manage_project_home', compact('projects'));
+        // Get projects based on the selected category IDs (if filter is applied)
+        $selectedCategoryIds = $request->input('category_id', []);
+
+        // Query projects with eager loading of the category relationship
+        $projectsQuery = Project::with('category')
+            ->where('status', 'approved');
+
+        // Apply search filter if search query exists
+        if ($searchQuery) {
+            $projectsQuery->where('Project_Name', 'like', '%' . $searchQuery . '%');
+        }
+
+        // Apply category filter if selected categories exist
+        if (!empty($selectedCategoryIds)) {
+            $projectsQuery->whereIn('category_id', $selectedCategoryIds);
+        }
+
+        // Paginate the filtered projects
+        $projects = $projectsQuery->paginate(5);
+
+        return view('screens.manage_project_home', compact('categories', 'projects'));
     }
 
     public function showPreview($id)
