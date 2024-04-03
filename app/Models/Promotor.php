@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Promotor extends Model
 {
     use HasFactory;
+    protected $table = 'promoters';
+
+    protected $fillable = [
+        'promoterName',
+        'promoterType',
+        'promoterWallets',
+        'comments',
+    ];
 }

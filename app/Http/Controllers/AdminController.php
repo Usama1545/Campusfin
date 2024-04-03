@@ -2,113 +2,136 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Employee;
-use App\Models\User;
-use App\Models\Project;
-use App\Models\Category;
+use App\Models\Company;
 use App\Models\Developer;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Models\PrivateInvestor;
+use App\Models\Project;
+use App\Models\ProjectType;
+use Illuminate\Http\Request;
+use App\Models\TakenStandard;
+use App\Models\ProjectCategory;
+use App\Models\Promoter;
 
 class AdminController extends Controller
 {
     public function index()
     {
-
         return view("dashboard");
     }
 
     public function add_project()
     {
-        $project_category = Category::all();
-        return view('dashboard_layouts.add_project', compact('project_category'));
+        // return view('layouts.add_project');
+        $project_type = ProjectType::all();
+        $project_category = ProjectCategory::all();
+        $project_standard = TakenStandard::all();
+        $developers = Developer::all();
+        $companies = Company::all();
+        $promoters = Promoter::all();
+        $privatenvestors = PrivateInvestor::all();
+        return view('layouts.add_project',
+                ['project_type' => $project_type,
+                'project_category' => $project_category,
+                'project_standard' => $project_standard,
+                'developers' => $developers,
+                'companies' => $companies,
+                'promoters' => $promoters,
+                'privatenvestors' => $privatenvestors,
+                ]);
     }
-
     public function project_store(Request $request)
     {
-        // Validate the request data if needed
+        // Validate the request if needed (you mentioned without validation, so validation is omitted here)
 
-        // Validate the Project_Logo file
-        $request->validate([
-            'Project_Logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust validation rules as needed
-        ]);
-
-        // Handle file upload
-        if ($request->hasFile('Project_Logo')) {
-            $image = $request->file('Project_Logo');
+        // Handle file upload for Project Logo
+        if ($request->hasFile('projectLogo')) {
+            $image = $request->file('projectLogo');
             $imageName = time() . '_' . $image->getClientOriginalName();
             $image->move(public_path('products'), $imageName); // Move image to 'public/products' directory
-
-            // Check if the image was successfully moved
-            if (!file_exists(public_path('products/' . $imageName))) {
-                return redirect()->back()->with('error', 'Failed to move image');
-            }
         } else {
-            return redirect()->back()->with('error', 'No image file uploaded');
+            $imageName = null; // Set imageName to null if no image is uploaded
         }
 
-
-
-        // dd($project_category);
-
-        // Create a new instance of Project
+        // Create a new Project instance and assign values to its properties
         $project = new Project;
-        $project->Project_Name = $request->Project_Name;
-        $project->Project_Logo = '/products/' . $imageName; // Save the file path in the database
-        $project->Project_Symbol = $request->Project_Symbol;
-        $project->Project_Type = $request->Project_Type;
-        $project->Project_Domain = $request->Project_Domain;
-        $project->Project_Category = $request->Project_Category;
-        $project->Project_Launch_Date = $request->Project_Launch_Date;
-        $project->Token_Standard = $request->Token_Standard;
-        $project->BlockChain_Plateform = $request->BlockChain_Plateform;
-        $project->Project_Website = $request->Project_Website;
-        $project->Project_GitHub_Link = $request->Project_GitHub_Link;
-        $project->Project_WhitePaper = $request->Project_WhitePaper;
-        $project->Project_Comment = $request->Project_Comment;
-        $project->Project_Comment_Id = $request->Project_Comment_Id;
-        $project->Project_Total_Supply = $request->Project_Total_Supply;
-        $project->Project_Circulating_Supply = $request->Project_Circulating_Supply;
+        $project->projectName = $request->input('projectName');
+        $project->projectSymbol = $request->input('projectSymbol');
+        $project->projectLogo = $imageName; // Save the image name or null if no image uploaded
+        $project->selectProjectType = $request->input('selectProjectType');
+        $project->selectProjectCategory = $request->input('selectProjectCategory');
+        $project->selectProjectStandard = $request->input('selectProjectStandard');
+        $project->selectProjectPlatform = $request->input('selectProjectPlatform');
+        $project->selectProjectDomain = $request->input('selectProjectDomain');
+        $project->projectAuditFile = $request->input('projectAuditFile');
+        $project->projectLaunchDate = $request->input('projectLaunchDate');
+        $project->projectWebsiteURL = $request->input('projectWebsiteURL');
+        $project->projectGitHubURL = $request->input('projectGitHubURL');
+        $project->projectTotalSupply = $request->input('projectTotalSupply');
+        $project->projectCirculatingSupply = $request->input('projectCirculatingSupply');
+        $project->projectWhitepaperURL = $request->input('projectWhitepaperURL');
+        $project->selectProjectSocialMedia = $request->input('selectProjectSocialMedia');
+        $project->enterSocialMediaURL = $request->input('enterSocialMediaURL');
+        $project->selectDeveloper = $request->input('selectDeveloper');
+        $project->selectCompany = $request->input('selectCompany');
+        $project->selectPromoterName = $request->input('selectPromoterName');
+        $project->selectPrivateInvestor = $request->input('selectPrivateInvestor');
+        $project->privateInvestorTokenRelease = $request->input('privateInvestorTokenRelease');
+        $project->radioInvestorRelease = $request->input('radioInvestorRelease');
+        $project->comment = $request->input('comment');
 
-        // Save the project record
+        // Save the project record to the database
         $project->save();
 
         return redirect()->route('add_project')->with('success', 'Project created successfully!');
     }
 
-
-
     public function project_list(Request $request)
     {
         $searchQuery = $request->input('search');
-
         // Query projects based on search query if it exists
         $query = Project::query();
         if (!empty($searchQuery)) {
-            $query->where('Project_Name', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Logo', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Symbol', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Type', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Domain', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Category', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Launch_Date', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Token_Standard', 'like', '%' . $searchQuery . '%')
-                ->orWhere('BlockChain_Plateform', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Website', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_GitHub_Link', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_WhitePaper', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Comment', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Comment_Id', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Total_Supply', 'like', '%' . $searchQuery . '%')
-                ->orWhere('Project_Circulating_Supply', 'like', '%' . $searchQuery . '%');
+            $query->where('projectName', 'like', '%' . $searchQuery . '%')
+                ->orWhere('selectProjectType', 'like', '%' . $searchQuery . '%')
+                ->orWhere('selectProjectCategory', 'like', '%' . $searchQuery . '%')
+                ->orWhere('selectProjectStandard', 'like', '%' . $searchQuery . '%')
+                ->orWhere('selectProjectPlatform', 'like', '%' . $searchQuery . '%')
+                ->orWhere('projectWhitepaperURL', 'like', '%' . $searchQuery . '%')
+                ->orWhere('projectTotalSupply', 'like', '%' . $searchQuery . '%')
+                ->orWhere('projectCirculatingSupply', 'like', '%' . $searchQuery . '%');
         }
 
         // Paginate the filtered projects
         $projects = $query->paginate(6);
 
-        return view('dashboard_layouts.project_list', compact('projects'));
+        return view('layouts.project_list', compact('projects'));
+        // return view('layouts.project_list');
     }
+
+
+    public function edit_product($id)
+    {
+        $projects = Project::find($id);
+        $project_type = ProjectType::all();
+        $project_category = ProjectCategory::all();
+        $project_standard = TakenStandard::all();
+        $developers = Developer::all();
+        $companies = Company::all();
+        $promoters = Promoter::all();
+        $privatenvestors = PrivateInvestor::all();
+        return view('dashboard_layouts.developer',
+                ['project_type' => $project_type,
+                'project_category' => $project_category,
+                'project_standard' => $project_standard,
+                'developers' => $developers,
+                'companies' => $companies,
+                'promoters' => $promoters,
+                'privatenvestors' => $privatenvestors,
+                'projects' => $projects,
+                ]);
+    }
+
+
 
     public function delete_project($id)
     {
@@ -129,65 +152,11 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Project approved successfully');
     }
 
-    public function show_category()
-    {
-        $category = Category::all();
 
-        return view('dashboard_layouts.show_category', compact('category'));
+
+    public function guide()
+    {
+        return view('template.guide_screen');
     }
 
-
-    public function add_category(Request $request)
-    {
-        $category = new Category();
-
-        $category->name = $request->name;
-        $category->save();
-
-        // return view('dashboard_layouts.show_category')->with('success', 'category add successfully');
-        return redirect()->back()->with('success', 'category add successfully');
-    }
-
-    public function delete_category($id)
-    {
-        $category = Category::find($id);
-        $category->delete();
-        return redirect()->back()->with('success', 'category delete successfully');
-    }
-
-    // Developer Work
-
-
-    public function developer()
-    {
-        $Developers = Developer::all();
-
-        return view('dashboard_layouts.developer', compact('Developers'));
-    }
-
-    public function add_developer(Request $request)
-
-    {
-        $Developers = new Developer();
-
-        $Developers->Developer_Name = $request->Developer_Name;
-        $Developers->Developer_Website = $request->Developer_Website;
-        $Developers->Developer_GitHub_Link = $request->Developer_GitHub_Link;
-        $Developers->Developer_Social_Media = $request->Developer_Social_Media;
-        $Developers->Developer_Previous_Project = $request->Developer_Previous_Project;
-        $Developers->Developer_Comments_Id = $request->Developer_Comments_Id;
-        $Developers->Developer_Comments = $request->Developer_Comments;
-
-        $Developers->save();
-        return redirect()->back()->with('success', 'category delete successfully');
-    }
-
-    public function delete_developer($id)
-    {
-        $Developers = Developer::find($id);
-        $Developers->delete();
-
-        return redirect()->back()->with('success', 'Developer delete successfully');
-
-    }
 }

@@ -1,39 +1,39 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BlogsController;
-use App\Http\Controllers\GuideController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuditController;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\PromoterController;
+use App\Http\Controllers\UsersideController;
+use App\Http\Controllers\developerController;
+use App\Http\Controllers\SocialMediaController;
+use App\Http\Controllers\PromoterTypeController;
+use App\Http\Controllers\CoinMarketCapController;
+use App\Http\Controllers\ProjectDomainController;
+use App\Http\Controllers\TakenStandardController;
+use App\Http\Controllers\WalletAddressController;
+use App\Http\Controllers\InvestorCompanyController;
+use App\Http\Controllers\PrivateInvestorController;
+use App\Http\Controllers\ProjectCategoryController;
+use App\Http\Controllers\BlockchainPlatformController;
+use App\Http\Controllers\submodules\ProjectTypeController;
 
 
-// HomeController
 
+// homepage
 Route::get("/", [HomeController::class, 'index']);
-Route::get("/add_project_home", [HomeController::class, 'add_project_home']);
-Route::post("/project_store_home", [HomeController::class, 'project_store_home']);
-Route::get("/manage_project_home", [HomeController::class, 'manage_project_home']);
-Route::get("/project_preview/{id}", [HomeController::class, 'showPreview']);
+// AUth controller
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get("/register", [AuthController::class, 'register']);
+Route::post("/register", [AuthController::class, 'store']);
 
-
-
-
-
-// Guide Route
-Route::get("/guide", [GuideController::class, 'guide_screen']);
-
-
-// blogs routs
-
-Route::get("/blogs", [BlogsController::class, 'blogs_screen']);
-Route::get("/blogs_preview", [BlogsController::class, 'blogs_preview']);
-
-
-// AdminController
-
-// Route::get("/admin", [AdminController::class, 'index']);
 Route::middleware('auth.check')->group(function () {
     if (Auth::check()) {
         $user = Auth::user();
@@ -47,40 +47,41 @@ Route::middleware('auth.check')->group(function () {
     }
 });
 
+// project and admin routes
 Route::get('/add_project', [AdminController::class, 'add_project'])->name('add_project');
 Route::Post('/project_store', [AdminController::class, 'project_store'])->name('project_store');
 Route::get('/list_project', [AdminController::class, 'project_list'])->name('list_project');
 Route::get('/delete_project/{id}', [AdminController::class, 'delete_project'])->name('delete_project');
 Route::get('/approve_project/{id}', [AdminController::class, 'approve'])->name('approve_project');
+Route::get('/edit_product/{id}', [AdminController::class, 'edit_product'])->name('edit_product');
 
-Route::get('/show_category', [AdminController::class, 'show_category'])->name('show_category');
-Route::post('/add_category', [AdminController::class, 'add_category'])->name('add_category');
-Route::get('/delete_category/{id}', [AdminController::class, 'delete_category'])->name('delete_category');
+// user side routes
 
-Route::get('/developer', [AdminController::class, 'developer'])->name('developer');
-Route::post('/add_developer', [AdminController::class, 'add_developer'])->name('add_developer');
-Route::get('/delete_developer/{id}', [AdminController::class, 'delete_developer'])->name('delete_developer');
+Route::get('/add_project_user', [UsersideController::class, 'add_project_user'])->name('add_project_user');
+Route::Post('/project_store_user', [UsersideController::class, 'project_store'])->name('project_store_user');
+Route::get('/list_project_user', [UsersideController::class, 'project_list'])->name('list_project_user');
+Route::get('/delete_project_user/{id}', [UsersideController::class, 'delete_project'])->name('delete_project_user');
+Route::get('/edit_product_user/{id}', [UsersideController::class, 'edit_product'])->name('edit_product_user');
 
+// Sub moduls routes
 
+Route::post('/project-type', [ProjectTypeController::class, 'store'])->name('project-type.store');
+Route::post('/project-category', [ProjectCategoryController::class, 'store'])->name('project-category.store');
+Route::post('/project-domains', [ProjectDomainController::class, 'store'])->name('project-domains.store');
+Route::Post('/taken_standard', [TakenStandardController::class, 'store']);
+Route::post('/blockchain-platform', [BlockchainPlatformController::class, 'store'])->name('blockchain.platform.store');
+Route::post('/audits', [AuditController::class, 'store'])->name('audits.store');
+Route::post('/social-media', [SocialMediaController::class, 'store'])->name('social-media.store');
+Route::post('/companies', [CompanyController::class, 'store'])->name('companies.store');
+Route::post('/developers', [DeveloperController::class, 'store'])->name('developers.store');
+Route::post('/promoters', [PromoterController::class, 'store'])->name('promoters.store');
+Route::post('/private-investors', [PrivateInvestorController::class, 'store'])->name('private_investors.store');
+Route::post('/investor-companies', [InvestorCompanyController::class, 'store'])->name('investor_companies.store');
+Route::post('/promoter-types', [PromoterTypeController::class, 'store'])->name('promoter_types.store');
+Route::post('/wallet-addresses', [WalletAddressController::class, 'store'])->name('wallet_addresses.store');
 
+// Sub modules end
 
+Route::get('/market-data', [CoinMarketCapController::class, 'getMarketData']);
 
-
-
-// User dashboard route
-Route::get('/user_add_project', [UserController::class, 'user_add_project']);
-Route::Post('/user_project_store', [UserController::class, 'user_project_store']);
-Route::get('/user_list_project', [UserController::class, 'user_project_list']);
-
-
-// login system
-
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-
-
-// employee regiseration
-Route::get("/register", [AuthController::class, 'register']);
-Route::post("/register", [AuthController::class, 'store']);
+Route::get('/guide', [AdminController::class, 'guide']);
