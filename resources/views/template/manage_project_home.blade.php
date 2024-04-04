@@ -71,12 +71,13 @@
             </div>
     <!-- <p class="text-center">This is the center content area where your main content will go.</p> -->
     <div class="row">
+        @foreach ($projects as $project)
 
     <div class="col-md-4 mt-5">
             <div class="card" style="width: 18rem;">
                 <div class="row">
                 <div class="col-md-6">
-                <img src="img/a.jpg" class="card-img-top" alt="...">
+                    <img src="{{ ('products/'. $project->projectLogo)}} " style="max-width: 100%; max-height: 150px;">
                 </div>
                 <div class="col-md-6">
 
@@ -92,20 +93,17 @@
                     <li class="list-group-item">A second item</li>
                 </ul>
                 <div class="card-body">
-                <a href="" class="card-link">View Project</a>
+                    <a href="preview_project_home/{{ $project->id }}" class="card-link">View Project</a>
                 </div>
             </div>
         </div>
-
-
+        @endforeach
 </div>
 <br>
 <!-- Centered pagination links -->
 <div class="centered-pagination-container">
     <span class="pagination"></span>
 </div>
-
-
             </div>
             <!-- Right Sidebar for Google Ads -->
             <div class="col-md-2 mt-5">
@@ -120,16 +118,9 @@
         </div>
     </div>
 </main>
-
-
-
-
-
-  <!-- Yasir Hameed -->
-
-  <!-- ======= Footer ======= -->
+<br>
+<br>
+<br>
 @include('template.footer')
-
 </body>
-
 </html>

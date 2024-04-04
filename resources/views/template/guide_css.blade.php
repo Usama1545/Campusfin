@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  background: #ccc;
+  background: #FFFFFF;
   margin: 30px 50px;
   line-height: 1.5;
 }

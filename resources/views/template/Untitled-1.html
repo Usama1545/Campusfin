@@ -1,25 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Manage Projects</title>
-@include('template.css')
+
+    <title>Projects Preview</title>
+    @include('template.css')
 </head>
-
 <body>
-
-
-    @include('template.topbar2')
-    @include('template.topnav')
-
-  <!-- ======= Header ======= -->
-    @include('template.header')
   <!-- End Header -->
+
+
+  @include('template.topbar2')
+
 
   <!-- ======= Hero Section ======= -->
   <main id="main">
     <div class="container-fluid mt-3">
-        <div class="row">
+        <div class="row justify-content-center">
             <!-- Left Sidebar -->
             <div class="col-md-2 mt-5" >
                 <div class="card" style="height:400px;">
@@ -27,23 +25,23 @@
                         <h5 class="card-title text-center">Filter</h5>
                         <!-- Filter by Category -->
                         <div class="list-group mt-3">
-                        <form action="" method="GET">
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Select Categories
-        </button>
-        <div class="dropdown-menu" aria-labelledby="categoryDropdown">
+                            <form action="" method="GET">
+                              <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="categoryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Select Categories
+                                </button>
+                            <div class="dropdown-menu" aria-labelledby="categoryDropdown">
 
-                <a class="dropdown-item" href="#">
-                    <input type="checkbox" name="category_id[]" id="category" value="">
-                    <label for=""></label>
-                </a>
+                        <a class="dropdown-item" href="#">
+                            <input type="checkbox" name="category_id[]" id="category" value="">
+                            <label for=""></label>
+                        </a>
 
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary btn-sm
-     mt-3">Apply Filter</button>
-</form>
+                </div>
+            </div>
+        <button type="submit" class="btn btn-primary btn-sm
+        mt-3">Apply Filter</button>
+        </form>
 
                         </div>
                     </div>
@@ -54,7 +52,7 @@
 
             <!-- Center Content Area -->
             <div class="row">
-                <div class="col-6">
+                <div class="col-md-6">
                 <form action="" method="GET" class="ml-5">
     <div class="row g-3 align-items-center">
         <div class="col">
@@ -71,44 +69,32 @@
             </div>
     <!-- <p class="text-center">This is the center content area where your main content will go.</p> -->
     <div class="row">
+        @if ($projects)
+        <div class="card mt-5 col-12">
+            <h1>Project Details</h1>
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-6"> <img src="{{ asset('products/'. $projects->projectLogo) }}" style="width: 100%; max-height: 450px;"></div>
+                    <div class="col-md-6">
+                     <h1>Project Title</h1>
+                     <h2><span>project Name</span> {{ $projects->projectName }}</h2>
+                    </div>
 
-    <div class="col-md-4 mt-5">
-            <div class="card" style="width: 18rem;">
-                <div class="row">
-                <div class="col-md-6">
-                <img src="img/a.jpg" class="card-img-top" alt="...">
-                </div>
-                <div class="col-md-6">
-
-                    <h5 class="card-title mt-5"></h5>
-                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-
-
-                </div>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Category</li>
-                    <li class="list-group-item">Launch Date</li>
-                    <li class="list-group-item">A second item</li>
-                </ul>
-                <div class="card-body">
-                <a href="" class="card-link">View Project</a>
                 </div>
             </div>
+@else
+    <p>Project not found.</p>
+@endif
         </div>
-
-
-</div>
-<br>
+    </div>
+    <br>
 <!-- Centered pagination links -->
-<div class="centered-pagination-container">
-    <span class="pagination"></span>
-</div>
-
-
+            <div class="centered-pagination-container">
+                <span class="pagination"></span>
+            </div>
             </div>
             <!-- Right Sidebar for Google Ads -->
-            <div class="col-md-2 mt-5">
+            <div class="col-sm-2 mt-5">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Google Ads</h5>
@@ -121,15 +107,11 @@
     </div>
 </main>
 
+<br>
+<br>
+<br>
 
-
-
-
-  <!-- Yasir Hameed -->
-
-  <!-- ======= Footer ======= -->
 @include('template.footer')
-
 </body>
 
 </html>

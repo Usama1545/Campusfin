@@ -106,14 +106,47 @@
           </li>
           <li class="dropdown"><a href="#"><span>Crypto</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <!-- <li><a href="#">Blogs</a></li> -->
               <li class="dropdown"><a href="#"><span>Project</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="{{url('add_project_home')}}">Add Project</a></li>
                   <li><a href="{{url('manage_project_home')}}">Manage Project</a></li>
-                  <!-- <li><a href="#">API Testing</a></li>
-                  <li><a href="#">Automation Testing</a></li>
-                  <li><a href="#">Interview Questions</a></li> -->
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Project Category
+            </span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{url('add_project_home')}}">Add Projec Categoryt</a></li>
+                  <li><a href="{{url('manage_project_home')}}">Manage Project Category</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Project Domain</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{url('add_project_home')}}">Add Project Domain</a></li>
+                  <li><a href="{{url('manage_project_home')}}">Manage Project Domain</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Token Standard</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{url('add_project_home')}}">Add Token Standard  [BEP-2, ERC20 etc ]</a></li>
+                  <li><a href="{{url('manage_project_home')}}">Manage Token Standard</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Block Chain Platform</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{url('add_project_home')}}">Add Block Chain Platform  [Etherium, BNB etc ]</a></li>
+                  <li><a href="{{url('manage_project_home')}}">Manage Block Chain Platform</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Project Audit</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{url('add_project_home')}}">Add Audit Firm</a></li>
+                  <li><a href="{{url('manage_project_home')}}">Manage Audit Firm</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Project Domain</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="{{url('add_project_home')}}">Add Project Domain</a></li>
+                  <li><a href="{{url('manage_project_home')}}">Manage Project Domain</a></li>
                 </ul>
               </li>
             </ul>

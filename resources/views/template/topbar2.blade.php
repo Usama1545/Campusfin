@@ -50,8 +50,8 @@
 
 
 
-<section id="topbar" class="d-flex align-items-center">
-    <div class="container d-flex justify-content-between scrollable">
+<section id="topbar" class="d-flex align-items-center" style="background-color: gray">
+    <div class="container d-flex justify-content-between scrollable" style="background-color: gray">
 
         <div class="social-links">
             <a href="mailto:contact@example.com">app</a>

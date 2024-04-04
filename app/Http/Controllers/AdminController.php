@@ -102,7 +102,7 @@ class AdminController extends Controller
         }
 
         // Paginate the filtered projects
-        $projects = $query->paginate(6);
+        $projects = $query->paginate(10);
 
         return view('layouts.project_list', compact('projects'));
         // return view('layouts.project_list');
